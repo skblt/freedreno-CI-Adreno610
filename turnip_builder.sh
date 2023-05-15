@@ -47,7 +47,7 @@ unzip "$ndkver"-linux.zip  &> /dev/null
 
 
 echo "Downloading mesa source (~30 MB) ..." $'\n'
-curl https://gitlab.freedesktop.org/mesa/mesa/-/archive/main/mesa-main.zip --output mesa-main.zip &> /dev/null
+curl https://gitlab.freedesktop.org/Danil/mesa/-/archive/freedreno/feature/a610/mesa-freedreno-feature-a610.zip --output mesa-main.zip &> /dev/null
 ###
 echo "Exracting mesa source to a folder ..." $'\n'
 unzip mesa-main.zip &> /dev/null
@@ -112,11 +112,11 @@ cat <<EOF >"meta.json"
   "schemaVersion": 1,
   "name": "Mesa Turnip Adreno Driver 23.2.0",
   "description": "Open-source Vulkan driver build from mesa drivers repo",
-  "author": "Mr_Purple_666",
+  "author": "Mr_Purple_666 (Original Author)",
   "packageVersion": "T-Alpha",
   "vendor": "Mesa",
   "driverVersion": "23.2.0-devel",
-  "minApi": 30,
+  "minApi": 28,
   "libraryName": "vulkan.adreno.so"
 }
 EOF
