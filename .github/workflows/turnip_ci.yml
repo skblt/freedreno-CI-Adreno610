@@ -1,6 +1,7 @@
 name: Build "turnip"
 
-
+on:
+  workflow_dispatch:
 
 
 
