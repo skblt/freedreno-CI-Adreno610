@@ -60,8 +60,8 @@ ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 cat <<EOF >"android-aarch64"
 [binaries]
 ar = '$ndk/llvm-ar'
-c = ['ccache', '$ndk/aarch64-linux-android31-clang']
-cpp = ['ccache', '$ndk/aarch64-linux-android31-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++']
+c = ['ccache', '$ndk/aarch64-linux-android28-clang']
+cpp = ['ccache', '$ndk/aarch64-linux-android28-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++']
 c_ld = 'lld'
 cpp_ld = 'lld'
 strip = '$ndk/aarch64-linux-android-strip'
@@ -76,7 +76,7 @@ EOF
 
 
 echo "Generating build files ..." $'\n'
-meson build-android-aarch64 --cross-file $workdir/mesa-main/android-aarch64 -Dbuildtype=release -Dplatforms=android -Dplatform-sdk-version=31 -Dandroid-stub=true -Dgallium-drivers= -Dvulkan-drivers=freedreno -Dfreedreno-kmds=kgsl -Db_lto=true &> $workdir/meson_log
+meson build-android-aarch64 --cross-file $workdir/mesa-freedreno-feature-a610/android-aarch64 -Dbuildtype=release -Dplatforms=android -Dplatform-sdk-version=28 -Dandroid-stub=true -Dgallium-drivers= -Dvulkan-drivers=freedreno -Dfreedreno-kmds=kgsl -Db_lto=true &> $workdir/meson_log
 
 
 
@@ -86,10 +86,10 @@ ninja -C build-android-aarch64 &> $workdir/ninja_log
 
 
 echo "Using patchelf to match soname ..."  $'\n'
-cp $workdir/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so $workdir
-cp $workdir/mesa-main/build-android-aarch64/src/android_stub/libhardware.so $workdir
-cp $workdir/mesa-main/build-android-aarch64/src/android_stub/libsync.so $workdir
-cp $workdir/mesa-main/build-android-aarch64/src/android_stub/libbacktrace.so $workdir
+cp $workdir/mesa-freedreno-feature-a610/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so $workdir
+cp $workdir/mesa-freedreno-feature-a610/build-android-aarch64/src/android_stub/libhardware.so $workdir
+cp $workdir/mesa-freedreno-feature-a610/build-android-aarch64/src/android_stub/libsync.so $workdir
+cp $workdir/mesa-freedreno-feature-a610/build-android-aarch64/src/android_stub/libbacktrace.so $workdir
 cd $workdir
 patchelf --set-soname vulkan.adreno.so libvulkan_freedreno.so
 mv libvulkan_freedreno.so vulkan.adreno.so
