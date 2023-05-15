@@ -51,7 +51,7 @@ curl https://gitlab.freedesktop.org/Danil/mesa/-/archive/freedreno/feature/a610/
 ###
 echo "Exracting mesa source to a folder ..." $'\n'
 unzip mesa-main.zip &> /dev/null
-cd mesa-main
+cd mesa-freedreno-feature-a610
 
 
 
