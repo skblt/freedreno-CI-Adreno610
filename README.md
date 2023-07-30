@@ -1,3 +1,5 @@
+NOTE: This project will no longer be updated as the support for Adreno 610 is now merged in the main mesa repository.
+
 <p align="center">
 <img src="https://telegra.ph/file/63779d73be339db1ed2cc.jpg" >
 </p>
